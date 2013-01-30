@@ -14,10 +14,12 @@
 (defn parse-body [fn-request] 
   (json/read-str (get (fn-request) :body)))
 
-(defn init []
-  (println (parse-body status)))
+(defn play-game []
+  (if (nil?  ((parse-body status) "arena"))
+    (println "Game not running. Exiting")
+    (println "recursing")))
 
 (defn -main
   [& args]
   (println "Starting bot")
-  (init))
+  (play-game))

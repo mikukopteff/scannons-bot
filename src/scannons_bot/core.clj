@@ -14,8 +14,9 @@
 (defn parse-body [fn-request] 
   (json/read-str (get (fn-request) :body)))
 
+
 (defn play-game []
-  (if (nil?  ((parse-body status) "arena"))
+  (if (empty?  (parse-body status))
     (println "Game not running. Exiting")
     (println "recursing")))
 

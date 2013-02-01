@@ -14,11 +14,16 @@
 (defn parse-body [fn-request] 
   (json/read-str (get (fn-request) :body)))
 
+(defn action[status]
+  (println status)
+  (let [opposition (get status "leftCannon")]
+  (println opposition) ))
 
 (defn play-game []
-  (if (empty?  (parse-body status))
-    (println "Game not running. Exiting")
-    (println "recursing")))
+  (let [game-state (parse-body status)] 
+    (if (empty?  game-state)
+      (println "Game not running. Exiting")
+      (action game-state))))
 
 (defn -main
   [& args]
